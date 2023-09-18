@@ -1,4 +1,4 @@
-package com.github.vnryan.configuration;
+package io.github.vnryan.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.github.vnryan.retrofit.configuration;
+package io.github.vnryan.retrofit.configuration;
 
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
