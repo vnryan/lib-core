@@ -5,7 +5,7 @@
 	<packaging>pom</packaging>
 	<groupId>io.github.vnryan</groupId>
 	<artifactId>lib-core</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<description>Core project for Spring Boot</description>
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -19,17 +19,39 @@
 		<swagger.version>2.7.0</swagger.version>
 	</properties>
 	<distributionManagement>
-		<repository>
-			<id>central</id>
-			<name>Releases</name>
-			<url>https://repo.maven.apache.org/maven2</url>
-		</repository>
 		<snapshotRepository>
-			<id>central</id>
-			<name>Snapshot</name>
-			<url>https://repo.maven.apache.org/maven2</url>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
 	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>snapshots-repo</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>releases-repo</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<dependencyManagement>
 		<dependencies>
 			<!--INTERNAL-->
@@ -92,6 +114,31 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven.compiler.plugin.version}</version>
 			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.sonatype.plugins</groupId>-->
+<!--				<artifactId>nexus-staging-maven-plugin</artifactId>-->
+<!--				<version>1.6.7</version>-->
+<!--				<extensions>true</extensions>-->
+<!--				<configuration>-->
+<!--					<serverId>ossrh</serverId>-->
+<!--					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>-->
+<!--					<autoReleaseAfterClose>true</autoReleaseAfterClose>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
+<!--			<plugin>-->
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-gpg-plugin</artifactId>-->
+<!--				<version>1.6</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>sign-artifacts</id>-->
+<!--						<phase>verify</phase>-->
+<!--						<goals>-->
+<!--							<goal>sign</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
